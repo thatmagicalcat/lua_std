@@ -8,3 +8,4 @@ crate-type = ["cdylib"]
 
 [dependencies]
 mlua = { version = "0.9.1", features = ["lua54", "module"] }
+thiserror = "1.0.50"

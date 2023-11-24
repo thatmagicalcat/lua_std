@@ -11,3 +11,7 @@ print("Current directory: " .. std.env.current_dir())
 print("Current os: " .. std.env.consts.OS .. ", os family: " .. std.env.consts.OS_FAMILY)
 print("Lua path: " .. std.env.interpreter_path())
 print("Args supplied: " .. args_str)
+
+print("Used memory: " .. std.lua.get_used_memory())
+std.lua.gc.collect();
+print("Used memory: " .. std.lua.get_used_memory())

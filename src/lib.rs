@@ -7,9 +7,13 @@ use mlua::prelude::*;
 fn std(lua: &Lua) -> LuaResult<LuaTable> {
     let exports = lua.create_table()?;
 
-    let env_module = modules::env::get_module(lua)?;
-
-    exports.set("env", env_module)?;
+    register_module!(
+        mod exports {
+            "env" => modules::env::get_module(lua)?,
+            "lua" => modules::lua::get_module(lua)?,
+            "fs" => modules::fs::get_module(lua)?,
+        }
+    );
 
     Ok(exports)
 }
